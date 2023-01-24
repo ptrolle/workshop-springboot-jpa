@@ -1,12 +1,17 @@
 package com.ptrolle.newDateBaseTest.entities;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user") //usamos isso para renomear para nao dar conflito com a palavra reservada no banco H2 User
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //para auto incremento de id no banco de dados
     private Long id;
     private String name;
     private String email;
